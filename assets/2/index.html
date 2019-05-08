@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html><body>
+<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.0.2/dist/altspace.min.js"></script>
+<script>
+		// an example custom component, that will change the color when clicked
+		AFRAME.registerComponent('open-notebook', {
+			schema: {},
+			init: function(){
+				var self = this;
+				self.el.addEventListener('click', function(){
+					//var randomColor = Math.floor(Math.random() * 0x1000000);
+					//randomColor = '#' + ('000000'+(randomColor).toString(16)).slice(-6);
+					//self.el.setAttribute('color', randomColor);
+					altspace.open('https://zulu1.cyberforce.site/console/422e2d32-4749-af47-b68d-3a9d39bcb672/WorkStation_1/rotem', '_blank');
+				});
+			}
+		});
+</script>
+<!-- set up the scene -->
+<a-scene altspace='vertical-align: bottom;'>
+
+    <!-- preload all our textures -->
+    <a-assets>        
+		<a-asset-item id='notebook-obj' src='/assets/2/Lowpoly_Notebook_2.obj'></a-asset-item>
+		<a-asset-item id='notebook-mtl' src='/assets/2/Lowpoly_Notebook_2.mtl'></a-asset-item>
+    </a-assets>
+	
+	<!-- Da Plane, Boss, Da Plane -->
+	<a-obj-model src="#notebook-obj" mtl="#notebook-mtl" rotation="0 75 0" scale="0.1 0.1 0.1" position="0 0 0" open-notebook></a-obj-model>
+    
+</a-scene>
+
+</body></html>
